@@ -114,7 +114,7 @@ void gildong()
 		(return 커피;)<-생략불가능
 }
 
-콜라 juwon(Int coin)
+콜라 juwon(int coin)
 {
 1. 자판기 앞으로 이동;
 2. 동전 투입;
