@@ -149,6 +149,15 @@ class 클래스명
 }
 
 - 클래스의 파일명은 클래스명.java로 저장한다.
+- 클래스 내부에 main이 없으면 독립적으로 실행되지 않는다.(에러발생)
+- main을 포함하고 있는 클래스를 우리는 JAVA Application 이라 부른다.
+  JAVA Application : 독립적으로 실행할 수 있는 main() 메소드를 포함한 클래스
+  그 외: 자바 class
+
+- 그 외 메소드는 다른 곳에서 사용가능
+  B b = new B();
+  b.gildong();
+
 
 
 
