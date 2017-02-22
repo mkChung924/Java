@@ -1,9 +1,11 @@
+import java.util.Scanner;
+
 class GrandParent
 {
 	int g = 100;
 
 	void grand(){
-		System.out.println("Á¶ºÎ¸ğ ¾È³ç~");
+		System.out.println("ì¡°ë¶€ëª¨ ì•ˆë…•~");
 	}
 }
 
@@ -14,13 +16,13 @@ class Parent extends GrandParent
 	int j = 22;
 
 	void print(){
-		System.out.println("ÇÁ¸°Æ®¸Ş¼Òµå");
+		System.out.println("í”„ë¦°íŠ¸ë©”ì†Œë“œ");
 	}
 	void hello2(String a){
-		System.out.println(a+ " ºÎ¸ğ¾È³ç~");
+		System.out.println(a+ " ë¶€ëª¨ì•ˆë…•~");
 	}
 	void hello2(int a){
-	System.out.println(a+ " ºÎ¸ğ¾È³ç~");
+	System.out.println(a+ " ë¶€ëª¨ì•ˆë…•~");
 	}
 }
 
@@ -30,11 +32,11 @@ class Child extends Parent
 	int m = 44;
 
 	void bark(){
-		System.out.println("¸Û¸Û");
+		System.out.println("ë©ë©");
 	}
 
 	void hello(){
-		System.out.println("ÀÚ½Ä¾È³ç~");
+		System.out.println("ìì‹ì•ˆë…•~");
 	}
 
 }
@@ -44,9 +46,9 @@ class InheritanceTest
 {
 	public static void main(String args[])
 	{
-		//ÀÚ½ÄÅ¬·¡½º °´Ã¼»ı¼º
-		Child child = new Child();//Child Å¬·¡½º¸¦ »ç¿ëÇÒ ÁØºñ°¡ ³¡³µ´Ù.
-		//c.~ : ChildÅ¬·¡½º¿¡ ÀÖ´Â ~ 
+		//ìì‹í´ë˜ìŠ¤ ê°ì²´ìƒì„±
+		Child child = new Child();//Child í´ë˜ìŠ¤ë¥¼ ì‚¬ìš©í•  ì¤€ë¹„ê°€ ëë‚¬ë‹¤.
+		//c.~ : Childí´ë˜ìŠ¤ì— ìˆëŠ” ~ 
 		child.bark();
 		child.hello();
 		System.out.println("k = " + child.k);
@@ -54,7 +56,7 @@ class InheritanceTest
 		child.print();
 		System.out.println("i = " + child.i);
 
-		child.hello2("Á¤¸í±Ô");
+		child.hello2("ì •ëª…ê·œ");
 		child.hello2(1);
 
 		child.grand();
@@ -65,11 +67,23 @@ class InheritanceTest
 		System.out.println("unhappy".substring(0,7));
 
 		String number = "111111-1111111";
-		System.out.println("ÁÖ¹Î¹øÈ£ ¾ÕÀÚ¸®: "+number.substring(0,6));
-		System.out.println("ÁÖ¹Î¹øÈ£ µŞÀÚ¸®: "+number.substring(7,13));
+		System.out.println("ì£¼ë¯¼ë²ˆí˜¸ ì•ìë¦¬: "+number.substring(0,6));
+		System.out.println("ì£¼ë¯¼ë²ˆí˜¸ ë’·ìë¦¬: "+number.substring(7,13));
 
 		Parent p = new Child();
-		//Child c = new Parent(); ==> ¿¡·¯¹ß»ı
+		//Child c = new Parent(); ==> ì—ëŸ¬ë°œìƒ
+		
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("ë¬¸ìì—´ ì¶œë ¥ í”„ë¡œê·¸ë¨ì…ë‹ˆë‹¤.");
+		System.out.println("***************************");
+		System.out.print("ì„±ì„ ì…ë ¥í•˜ì‹œì˜¤ : ");
+		String x = sc.nextLine();
+		System.out.print("ì´ë¦„ì„ ì…ë ¥í•˜ì‹œì˜¤ : ");
+		String y = sc.nextLine();
+		System.out.print("ì•ˆë…•í•˜ì„¸ìš”? " + x + y + "ì”¨!");
+
+
 
 
 	}
