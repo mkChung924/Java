@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 class GuGuDanTest
 {
@@ -6,7 +8,7 @@ class GuGuDanTest
 	{
 
 		for(int i = 3; i < 7; i++){
-			System.out.println("< " + i + "´Ü >");
+			System.out.println("< " + i + "ë‹¨ >");
 			for(int j = 1 ; j < 10; j++){
 				System.out.println(i + " x " + j + " = " + (i*j));
 
@@ -15,13 +17,14 @@ class GuGuDanTest
 		}
 
 		System.out.println("######################################################");
-		System.out.println("################±¸±¸´Ü Ãâ·Â ÇÁ·Î±×·¥##################");
+		System.out.println("################êµ¬êµ¬ë‹¨ ì¶œë ¥ í”„ë¡œê·¸ëž¨##################");
 		System.out.println("######################################################");
-		System.out.print("¿øÇÏ´Â ´ÜÀ» ÀÔ·ÂÇÏ½Ã¿À.(¡ØONLY 1~9, 0: ¸ðµç ±¸±¸´Ü): ");
+		System.out.print("ì›í•˜ëŠ” ë‹¨ì„ ìž…ë ¥í•˜ì‹œì˜¤.(0: ëª¨ë“  êµ¬êµ¬ë‹¨(1~9)): ");
 
-		int x = System.in.read() - 48;
-		System.in.read();
-		System.in.read();
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		String str = br.readLine();
+		int x = Integer.parseInt(str);
 
 				if(x == 0){
 					fullgugudan();
@@ -36,14 +39,14 @@ class GuGuDanTest
 		{
 			System.out.println(b + " x " + i + " = " + (b*i));
 		}
-		System.out.println(">>>>>>>>>> "+ b + "´Ü Ãâ·Â ¿Ï·á! <<<<<<<<<<");
+		System.out.println(">>>>>>>>>> "+ b + "ë‹¨ ì¶œë ¥ ì™„ë£Œ! <<<<<<<<<<");
 	}
 
 		static void fullgugudan()
 	{
 		for(int i = 1; i < 10 ; i++)
 		{
-			System.out.println(i + "´Ü");
+			System.out.println(i + "ë‹¨");
 			for(int j = 1; j < 10 ; j++){
 				System.out.println(i + " x " + j + " = " + (i*j));
 			}
