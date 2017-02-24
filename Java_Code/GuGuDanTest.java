@@ -1,6 +1,7 @@
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+//import java.io.IOException;
+//import java.io.BufferedReader;
+//import java.io.InputStreamReader;
+import java.io.*;
 
 class GuGuDanTest
 {
@@ -30,15 +31,24 @@ class GuGuDanTest
 		System.out.println("\n######################################################");
 		System.out.println("################구구단 출력 프로그램##################");
 		System.out.println("######################################################");
-		System.out.print("원하는 단을 입력하시오.(0: 모든 구구단(1~9)): ");
+		System.out.print("원하는 단을 입력하시오.만약 일정 구간의 구구단을 원할시 00을 입력하세요.\n(0: 모든 구구단(1~9), 00: 일정구간 구구단): ");
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		String str = br.readLine();
 		int x = Integer.parseInt(str);
 
-				if(x == 0){
+				if(str.equals("0")){
 					fullgugudan();
+				} else if(str.equals("00")){
+					System.out.print("시작 단: ");
+					String first = br.readLine();
+					System.out.print("끝 단: ");
+					String last = br.readLine();
+					int f = Integer.parseInt(first);
+					int l = Integer.parseInt(last);
+
+					gugudan(f,l);
 				} else {
 					gugudan(x);
 				}
@@ -61,6 +71,18 @@ class GuGuDanTest
 			System.out.println(i + "단");
 			for(int j = 1; j < 10 ; j++){
 				System.out.println(i + "x" + j + "= " + (i*j));
+			}
+			System.out.println();
+		}
+	}
+
+	static void gugudan(int s, int e){
+
+		for(int i = s; i <= e; i++){
+			System.out.println("< " +i + "단 >");
+			for(int j = 1; j<10; j++){
+				System.out.println(i + "x" + j + "= " + (i*j));
+
 			}
 			System.out.println();
 		}
