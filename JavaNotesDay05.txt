@@ -1,0 +1,199 @@
+<생성자> constructor
+- 새로운 객체를 생성하기 위해서 초기화해주는 메소드
+
+규칙)
+    1. 생성자의 이름은 반드시 클래스명과 일치(대소문자일치)
+    2. 리턴자료형을 명시하지 않는다.(void조차 x)
+    -----> 1,2 : 일반 메소드와의 차이점.
+
+    3. 객체생성시 자동으로 호출.
+    4. 클래스내에 생성자가 하나도 없다면 자바컴파일러가 컴파일시 자동으로 (기본 생성자를) 추가.
+	※단, 클래스내에 한개이상의 생성자가 정의되어 있다면 컴파일러는 소스 코드에 관여하지 않는다!
+
+
+class Abc{
+
+   int su;
+   My my;
+
+   Abc(){ // 매개변수가 비어있는 생성자
+	  //멤버필드 초기화
+	     su = 10;
+	     my = new My();
+
+	  //한번 실행, 선행작업
+	}
+
+   Abc(String name){
+
+
+	}
+
+   Abc(String name){} // 오버로딩 생성자
+
+   ABc(int age){} // 에러 발생 : 리턴형 필요함!!
+
+   void hello(){}
+
+}//class Abc
+
+class Test{
+
+	public static void main(String args[]){
+		Abc a = new Abc();
+			   -------
+			   생성자 호출!
+
+		a.hello();
+
+		Abc a2 = new Abc("정명규");
+	
+	}
+}
+
+<this> 자기참조연산자
+1. 메소드 내에서 사용.
+2. 객체생성자내에서 다른 생성자를 호출시 사용.
+	class A{
+	   String str;
+
+	   A(){ //기본생성자
+		this("자바");
+	   }
+	   A(String str){ //오버로딩 생성자
+
+	   }
+
+	   void print(){
+		System.out.println("STR = " + str);
+	   }
+
+	}
+3. 매개변수(지역변수)와 맴버변수를 구분하기 위해 멤버변수 앞에 this를 붙여 사용.
+
+형식) //내 클래스
+
+	this.필드명
+	this.메소드명();
+	
+	this();
+
+참고) // 상위 클래스
+
+	super.필드명
+	super.메소드명();
+	super();
+
+class A{
+
+   int su = 13;
+   String name = "홍길동";
+
+   void lime(){
+
+	System.out.println("SU = " + this.su); // 같은 멤버일 때는 this.가 생략되어도 된다.
+	this.juwon(); // 마찬가지로 멤버메소드 호출시 this.가 생략되어도 된다.
+   }
+
+   void juwon(){
+
+   }
+
+   void juwon(int su){
+	this.su = su; //멤버변수에 대해 this.을 명시
+
+   }
+
+}
+
+<객체생성> : 메모리 할당
+
+1. Parent p = new Parent();
+
+2. Child c = new Child();
+
+3. Parent p2 = new Child();
+
+   p2.hello(); //불가능 : Parent에 hello()가 없음 // 부모 레퍼런스를 통해 자식 메소드 호출불가!
+   p2.print(); //자식프린트 출력 : 자식클래스에 오버라이딩 메소드가 발견되면 메모리 적재시 자식메소드로 대체함!
+
+4. Child c2 = new Parent(); X 성립하지않음
+
+   Child c2 = p2; x
+   Child c2 = (Child)p2; o 성립함
+		캐스팅
+
+package
+import
+[접근지정자(public, 생략)]class 클래스명  //final로 지정시 상속받지 않겠다는 것을 의미함.
+
+{
+
+[접근지정자 4개][modifier]자료형 변수명;
+
+[접근지정자 4개][modifier]리턴형 메소드명(){}
+   
+   *접근지정자(Access Control)
+	- public    : 서로 다른 패키지 접근 가능
+	- protected : 서로 같은 패키지 접근 가능(다른 패키지라도 상속관계 있다면 접근가능)
+	- default(생략) : 서로 같은 패키지 접근 가능(오로지 같은 패키지 접근 가능)
+	- private	: 같은 클래스에서만 접근 가능
+
+	자료형에 4개, 메소드명에 4개, 클래스에 2개
+
+}
+
+/////pack1
+
+public class Parent
+{
+	public void m1(){}
+	protected void m2(){}
+	void m3(){}
+	private void m4(){}
+}
+
+public class Child extends Parent
+{
+	m1(); : o
+	m2(); : o
+	m3(); : o
+	m4(); : x
+}
+
+public class Other
+{
+	Parent p = new Parent()
+	p.m1(); o
+	p.m2(); o
+	p.m3(); o
+	p.m4(); x
+}
+
+
+//////pack2
+
+import pack1.Parent;
+
+public class Child extends Parent
+{
+   void Test(){
+	m1(); o
+	m2(); o
+	m3(); x
+	m4(); x
+   }
+}
+
+import pack1.Parent;
+
+public class Other
+{
+   void Test(){
+	Parent p = new Parent();
+	p.m1(); o
+	p.m2(); x
+	p.m3(); x
+	p.m4(); x
+   }
+}
