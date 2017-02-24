@@ -68,7 +68,7 @@ class GuGuDanTest
 	}
 	}
 
-	//메소드1
+	//메소드1 : 원하는 단
 	static void gugudan(int b) throws IOException
 	{
 		System.out.println("< " + b + "단 >");
@@ -78,28 +78,11 @@ class GuGuDanTest
 		}
 		System.out.println(">>>>>>>>>> "+ b + "단 출력 완료! <<<<<<<<<<");
 		System.out.println();
-				System.out.print("종료하시겠습니까?(y : 종료, n : 계속) ");
-		String ans = br.readLine();
-		if(ans.equals("y")){
-			run = false;
-			System.out.println("\n구구단 프로그램 종료!!\n");
-		} else if(ans.equals("n")){
-			run = true;
-		} else {
-			System.out.println("잘못 입력하였습니다.\n프로그램을 중지하시겠습니까?(y/n) ");
-			String ans2 = br.readLine();
-			if(ans2.equals("y")){
-				run = false;
-			} else if(ans2.equals("n")){
-				run = true;
-			} else {
-				run = false;
-			}
-		}
+		off();
 
 	}
 
-		//메소드2
+		//메소드2 : 1부터 9단까지 구구단
 		static void fullgugudan() throws IOException
 	{
 		for(int i = 1; i < 10 ; i++)
@@ -110,28 +93,11 @@ class GuGuDanTest
 			}
 			System.out.println();
 		}
-		System.out.print("종료하시겠습니까?(y : 종료, n : 계속) ");
-		String ans = br.readLine();
-		if(ans.equals("y")){
-			run = false;
-			System.out.println("\n구구단 프로그램 종료!!\n");
-		} else if(ans.equals("n")){
-			run = true;
-		} else {
-			System.out.println("잘못 입력하였습니다.\n프로그램을 중지하시겠습니까?(y/n) ");
-			String ans2 = br.readLine();
-			if(ans2.equals("y")){
-				run = false;
-			} else if(ans2.equals("n")){
-				run = true;
-			} else {
-				run = false;
-			}
-		}
+		off();
 
 	}
 
-	//메소드3
+	//메소드3 : 일정 구간 구구단
 	static void gugudan(int s, int e) throws IOException
 	{
 
@@ -145,7 +111,14 @@ class GuGuDanTest
 			System.out.println();
 		}
 
-				System.out.print("종료하시겠습니까?(y : 종료, n : 계속) ");
+		off();
+
+	}
+
+	//메소드4 : 종료할래?
+	static void off() throws IOException{
+
+		System.out.print("종료하시겠습니까(y : 종료/ n : 계속)? ");
 		String ans = br.readLine();
 		if(ans.equals("y")){
 			run = false;
@@ -153,7 +126,7 @@ class GuGuDanTest
 		} else if(ans.equals("n")){
 			run = true;
 		} else {
-			System.out.println("잘못 입력하였습니다.\n프로그램을 중지하시겠습니까?(y/n) ");
+			System.out.println("잘못 입력하였습니다.\n프로그램을 중지하시겠습니까(y/n)? ");
 			String ans2 = br.readLine();
 			if(ans2.equals("y")){
 				run = false;
