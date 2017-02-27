@@ -1,0 +1,102 @@
+
+
+final class A{
+
+}
+-------> 마지막 클래스 : 자식클래스를 갖지 않는 클래스
+	class B extends A { ----> 에러
+	}
+
+class A{
+	final void hello(){
+
+	} -----> 마지막 메소드 : 재정의 할 수 없는 메소드!
+}
+
+class D extends C{
+
+	final int MAX = 100;
+	-----> 마지막 변수: 상수(constant) !!/ 고정값을 항상 넣어줘야한다. 아님 에러남.
+	-----> 상수는 전체 대문자를 사용해서 변수와 구분!!
+	
+	void maxAdd(){
+		max++; /// ---> 에러!!
+	}
+
+	void hello(){
+	} ----> 에러발생!!
+
+{
+
+===================================================
+<interface>
+
+ 형식)
+   [접근제한자] interface 인터페이스명
+	{
+		//필드
+			[public static final] int su = 10;
+			-----> public static final은 고정값임!!
+
+		//선언된 메소드
+			[public abstrac] void print();
+			-----> public abstract는 고정값임!!
+	}
+
+  - 클래스에 다중 상속을 구현할 수 있다.
+  - interfaced의 구성멤버는 필드, 선언된 메소드로만 구성.
+	void print(){
+	} -------> 정의된 메소드, 구현된 메소드;
+
+	void print(); ------> 선언된 메소드!!
+
+  - 서로 다른 제품에 연결할 수 있는 공통연결 모듈을 의미.
+  - 인터페이스는 어떻게 사용? 클래스에 구현해서 사용.
+
+
+  
+  <클래스와 인터페이스간의 상속 문법>
+  
+class A{}
+
+class B extends A{ //extends 뒤에는 상속 받고자 하는 한개의 클래스만 정의
+		//확장
+		}
+=======================================
+
+interface A{}
+interface B{}
+
+class C implements A,B{//A인터페이스에 선언된 메소드와 B인터페이스에 선언된 메소드들을 C클래스에서 전부 구현하겠음.
+		//구현	
+}
+
+========================================
+
+interface A{}
+class B{}
+
+class C implements A extends B{
+//에러: 클래스와 인터페이스를 동시에 상속할 때는 extends가 먼저, 인터페이스가 나중!!
+//implements가 먼저 나오면 컴파일러가 extends Object를 추가해줌
+}
+
+class C extends B implements A{
+
+} ----> (o)
+
+=========================================
+
+interface A{ void a(); }
+interface B{ void b(); }
+
+interface C extends A,B{
+
+}
+
+=========================================
+
+class A{}
+interface B    A { //말이 안됨~~
+
+}
