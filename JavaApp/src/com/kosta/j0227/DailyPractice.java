@@ -41,4 +41,7 @@ public class DailyPractice {
 
 	}
 
+	int a[] = {1,2,3};
+	String b[] = {"a", "b", "c"};
+
 }
