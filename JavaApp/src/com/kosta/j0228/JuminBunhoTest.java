@@ -63,6 +63,7 @@ public class JuminBunhoTest {
 		String month = a.substring(2,4);
 		String day = a.substring(4,6);
 		String gender = a.substring(7,8);
+		//charAt을 사용해서 char값을 받을 수도 있으나 난 별
 		String area = a.substring(8,10);
 		
 		int y = Integer.parseInt(year);
@@ -76,8 +77,8 @@ public class JuminBunhoTest {
 		else if(g == 2 || g == 4 || g == 6 || g == 8){sex = "여자";}
 		else {sex = "외계인";}
 		
-		if(g == 1 || g == 2 || g == 3 || g == 4 ){country = "내국인";}
-		else if(g == 5 || g==6 || g==7 || g==8){country = "외국인";}
+		if(g <= 4 ){country = "내국인";}
+		else if(g >= 5 ){country = "외국인";}
 		else{country = "외계인";}
 		
 		if(g == 1 || g == 2 || g == 5 || g == 6){
