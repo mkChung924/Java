@@ -3,17 +3,32 @@ package com.kosta.j0303;
 public class NameMenu {
 	
 	String names[];
+	int count;
 	
 	public NameMenu() {
 		
 		names = new String[5];
+		count = 0;
 		//System.out.println("haha");
+	}
+	
+	public boolean existName(String name){
+		for(int i = 0; i < names.length; i++){
+			if(name.equals(names[i])){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public void insert(String addName){ //이름 추가
 		
-		if(names[names.length-1] != null){
-			System.out.println("가득찼습니다.");
+//		if(names[names.length-1] != null){
+//			System.out.println("더 이상 입력할 수 없습니다.\n 한 개 이상의 이름을 먼저 삭제한 후 입력하세요.");
+//			return;
+//		}
+		if(count == 5){
+			System.out.println("꽉 참.");
 			return;
 		}
 		
@@ -26,6 +41,7 @@ public class NameMenu {
 				} 
 			} else if(names[i] == null){
 				names[i] = addName;
+				count++;
 				break;
 			}			
 		}
@@ -68,7 +84,33 @@ public class NameMenu {
 		
 	}
 	
+	public boolean oldNameCheck(String oldName){
+		
+		for(int i = 0; i < names.length; i++){
+			if(names[i] != null){
+				if(names[i].equals(oldName)){
+					return true;
+				} else {
+					System.out.println("존재하지 않는 이름입니다!!\n");
+					
+				}
+			} else {
+				System.out.println("##");
+				return false;
+			}
+		}
+		return false;
+		
+	}
+	
 	public void update(String oldName, String newName){ // 이름 변경
+		
+		for(int i = 0; i < names.length; i++){
+			if(newName.equals(names[i])){
+				System.out.println("새로운 이름이 이미 존재합니다.");
+				return;
+			}
+		}
 
 		if(names[0] != null){
 			for(int i = 0; i < names.length; i++){
@@ -91,11 +133,12 @@ public class NameMenu {
 		int i;
 		for(i = 0; i < names.length; i++){
 			if(names[i] == null){
-				System.out.println("이름을 찾을 수 없습니다.");
+				System.out.println("존재하지 않는 이름입니다!!");
 				return;
 			} else {
 			if(names[i].equals(delName)){
 				names[i] = null;
+				count--;
 				break;
 				}
 			}
@@ -109,7 +152,7 @@ public class NameMenu {
 		
 		System.out.println("삭제 완료!");
 		long end = System.currentTimeMillis();
-		System.out.println( "*실행 시간 : " + ( end - start )/1000.0 + "s");
+		System.out.println( "\n*실행 시간 : " + ( end - start )/1000.0 + "s");
 		
 	}
 
