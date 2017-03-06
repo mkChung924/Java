@@ -36,6 +36,7 @@ public class NameMenuTest {
 		num = Integer.parseInt(br.readLine()); // "1", "2", "3", "4", "5"
 		
 		switch(num){
+
 		case 1: 
 			String name;
 			System.out.print("이름 입력: ");
@@ -79,8 +80,7 @@ public class NameMenuTest {
 			
 			
 		}
-			
-			
+
 			System.out.println();
 			
 		} while(num != 5); //입력 받는 번호가 5번이 아닐때 계속 loop

@@ -12,6 +12,10 @@ public class NameMenu {
 	
 	public void insert(String addName){ //이름 추가
 		
+		if(names[names.length-1] != null){
+			System.out.println("가득찼습니다.");
+			return;
+		}
 		
 		for(int i = 0; i < names.length; i++){
 			
@@ -19,15 +23,13 @@ public class NameMenu {
 				if(names[i].equals(addName)){
 				System.out.println("동일한 이름이 존재합니다.");
 				return;
-				}
+				} 
 			} else if(names[i] == null){
 				names[i] = addName;
 				break;
 			}			
 		}
 		System.out.println("저장완료!");
-		
-		
 
 	}
 	
@@ -56,6 +58,7 @@ public class NameMenu {
 		}
 		
 	public boolean listCheck(){
+
 		if(names[0] != null){
 			return true;
 		} else {
@@ -66,7 +69,7 @@ public class NameMenu {
 	}
 	
 	public void update(String oldName, String newName){ // 이름 변경
-		
+
 		if(names[0] != null){
 			for(int i = 0; i < names.length; i++){
 				if(names[i].equals(oldName)){
@@ -78,10 +81,9 @@ public class NameMenu {
 		} else {
 			System.out.println("이름이 존재하지 않습니다.");
 		}
-		
-		
 	}
 	
+
 	public void delete(String delName){ // 이름 삭제
 		
 		long start = System.currentTimeMillis();
