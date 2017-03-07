@@ -1,10 +1,8 @@
 package com.kosta.j0228;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
-// 방법 1. 객체 생
+// 방법 1. 객체 생성
 //public class GuGuDanTest{
 //	
 //	static boolean run;
@@ -14,13 +12,14 @@ import java.io.InputStreamReader;
 //		GuGuDan ggd = new GuGuDan();
 //		
 //			run = true;
+//			int dan;
+//			char yn;
+
 //			while(run){
 //			
-//				ggd.wantDan();
-//				int dan = ggd.dan;
+//				dan = ggd.wantDan();
 //				ggd.printDan(dan);
-//				ggd.continueDan();
-//				char yn = ggd.result;
+//				yn = ggd.continueDan();
 //				if(yn == 'y'){
 //					run = true;
 //				} else if(yn == 'n'){
@@ -37,53 +36,58 @@ import java.io.InputStreamReader;
 //	}
 //}
 
-// 방법 2. 상
+// 방법 2. 상속
 public class GuGuDanTest extends GuGuDan{
 	
 	static boolean run;
 	
 	public static void main(String args[]) throws IOException{
 		
-		
 			run = true;
-			while(run){
+			char yn;
 			
-				wantDan();
-				int dan = GuGuDan.dan;
-				printDan(dan);
-				continueDan();
-				char yn = GuGuDan.result;
-				if(yn == 'y'){
-					run = true;
-				} else if(yn == 'n'){
-					System.out.println("구구단 종료!");
-					run = false;
-				} else {
-					System.out.println("잘못누르셨습니다.");
-					System.out.println("구구단 종료!");
-					run = false;
-				}
+			//while 문
+//			while(run){
+//			
+//				printDan(wantDan());
+//				yn = continueDan();
+//				if(yn == 'y' || yn == 'Y'){
+//					run = true;
+//				} else if(yn == 'n' || yn == 'N'){
+//					System.out.println("구구단 종료!");
+//					run = false;
+//				} else {
+//					System.out.println("잘못 누르셨습니다.");
+//					System.out.println("구구단 종료!");
+//					run = false;
+//				}
+//			
+//			}
 			
-			}
+			//do~while 문
+			do{
+				printDan(wantDan());
+				yn = continueDan();
+			} while(yn == 'y' || yn == 'Y');
+			//while(yn != ''n && yn != 'N');
+			
+			System.out.println("구구단 종료!");
 			
 	}
 }
 
 class GuGuDan{
 	
-	static int dan;
-	static char result;
-	
-	static int wantDan() throws IOException{
+	public static int wantDan() throws IOException{
 		System.out.print("원하는 단? ");
-		dan = System.in.read() - 48;
+		int dan = System.in.read() - 48;
 		System.in.read();
-		//System.in.read();
 		return dan;
 
 	}
 	
-	static void printDan(int dan){
+	public static void printDan(int dan){
+		System.out.println("< "+ dan + "단 >");
 		for(int i = dan; i <= dan; i++){
 			for(int j = 1; j < 10; j++){
 				System.out.println(i + "*" + j + " = " + (i*j));
@@ -91,11 +95,10 @@ class GuGuDan{
 		}
 	}
 	
-	static char continueDan() throws IOException{
+	public static char continueDan() throws IOException{
 		System.out.print("게속(y/n)? ");
-		result = (char) System.in.read();
+		char result = (char) System.in.read();
 		System.in.read();
-		//System.out.println(result);
 		return result;
 	}
 	

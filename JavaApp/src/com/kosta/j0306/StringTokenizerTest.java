@@ -17,7 +17,7 @@ public class StringTokenizerTest {
 		System.out.println(">StringTokenizer »ç¿ë");
 		do{
 			System.out.println(st.nextToken());
-		} while(st.hasMoreElements());
+		} while(st.hasMoreTokens());
 		
 //		while(st.hasMoreElements()){
 //			System.out.println(st.nextToken());

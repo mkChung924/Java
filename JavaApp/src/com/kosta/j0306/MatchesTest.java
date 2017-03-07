@@ -16,7 +16,7 @@ public class MatchesTest {
 		System.out.println(str.matches("[a]+"));// a문자 1~무한대
 		//?,*,+ : 횟수를 표현하는 부호
 		
-		System.out.println(str.matches("[abc]"));// a 또는 b 또는 c 문자 중 1번 출현
+		System.out.println(str.matches("[abc]+"));// a 또는 b 또는 c 문자 중 1번 출현
 		
 		String name = "gildong";
 		

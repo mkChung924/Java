@@ -49,6 +49,8 @@ public class StringTest {
 		//문자열 제거(문자열 앞뒤에 연속된 공백을 제거) = trim()
 		str.trim();
 		System.out.println(str.trim().length());
+		
+		System.out.println((int)'A');
 
 	}
 
