@@ -21,7 +21,7 @@ public class ExceptionTest {
 		//FileReader fr = new FileReader("파일의경로와파일명");
 		
 		try{ //만약에 try 내에서 예외가 발생한다면~
-		FileReader fr = new FileReader("/Users/myungkyuchung/git/Java/JavaApp/a.txt");//FileNotFoundException
+		FileReader fr = new FileReader("a.txt");//FileNotFoundException
 		
 		int i;
 		while((i = fr.read()) != -1){
