@@ -64,9 +64,24 @@ public class PersonMenu {
 	
 	public void update(int idx, int age, String job){
 	
-		String name = persons.get(idx-1).getName();
-		persons.set(idx-1, new Person(name, age, job));
-		System.out.println("변경 완료!\n");
+		//String name = persons.get(idx-1).getName();
+		int oldAge = persons.get(idx-1).getAge();
+		String oldJob = persons.get(idx-1).getJob();
+		persons.get(idx-1).setAge(age);
+		persons.get(idx-1).setJob(job);
+		//persons.set(idx-1, new Person(name, age, job));
+		System.out.println("변경 완료!");
+		
+		if(oldAge == age){
+			System.out.println("\t\t<변경사항>\n\t직업: " + oldJob + " -> " + job + "\n");
+
+		} else if(oldJob.equals(job)){
+			System.out.println("\t\t<변경사항>\n\t나이: " +oldAge + " -> " + age+"\n");
+
+		} else {
+			System.out.println("\t\t<변경사항>\n\t나이: " +oldAge + " -> " + age+"\n\t직업: " + oldJob + " -> " + job + "\n");
+
+		}
 		
 	}
 	
