@@ -14,7 +14,7 @@ class MyThread extends Thread{
 		try {
 			for(int i = 1; i < 11; i ++){
 				
-				Thread.sleep(1000);
+				sleep(1000);
 				System.out.println("자바스레드1: " + i);
 			}
 		} catch (InterruptedException e) {
@@ -56,7 +56,7 @@ public class ThreadTest {
 		//스레드객체 생성
 		MyThread2 r = new MyThread2(); // r ---> 스레드객체 ? X
 										// r ---> Runnable객체 O
-		Thread t2 = new Thread(r); // t2 ---> 스레드 객
+		Thread t2 = new Thread(r); // t2 ---> 스레드 객체
 		t2.start();
 	}
 
