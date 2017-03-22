@@ -78,6 +78,7 @@ public class MoveThread extends JFrame implements ActionListener, Runnable {
 		
 		Object ob = e.getSource();
 		if(ob == bt_start){
+			
 			if(t == null || t.getState() == State.TERMINATED){
 			t = new Thread(this);
 			System.out.println(t.getState());
