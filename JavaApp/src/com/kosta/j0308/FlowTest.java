@@ -3,6 +3,7 @@ package com.kosta.j0308;
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Frame;
@@ -10,6 +11,7 @@ import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.Menu;
 import java.awt.MenuBar;
+import java.awt.MenuItem;
 import java.awt.Panel;
 import java.awt.TextArea;
 import java.awt.TextField;
@@ -31,12 +33,15 @@ public class FlowTest implements ActionListener {
 	
 	Frame f;
 	Panel panel1, panel2, panel3, panel4, panel5, panel6, panel7;
-	Button remove, modify, cancel,cancel2, insert, select, update, delete;
+	Button remove, modify, cancel,cancel2, insert, select, update, delete, exit;
 	MenuBar menubar;
 	Menu edit, file, help;
+	MenuItem esc;
 	Label li1, li2, li3, updateNumLabel, newAgeLabel, newJobLabel, deleteNumLabel;
 	TextField tf1, tf2, tf3, updateNum, newAge, newJob, deleteNum;
 	TextArea ta1;
+	
+	Dimension dm;
 	
 	
 	public FlowTest() {//생성자 : 초기화 메소드
@@ -53,11 +58,12 @@ public class FlowTest implements ActionListener {
 		panel5 = new Panel();
 		panel6 = new Panel();
 		panel7 = new Panel();
-		ta1 = new TextArea("추가/검색/수정/삭제를 해보세요.\n",20,100);
+		ta1 = new TextArea("추가/검색/수정/삭제를 해보세요.\n종료 하시려면 종료 또는 파일->끝내기를 누르세요.\n",20,100);
 		menubar = new MenuBar();
 		file = new Menu("파일");
 		edit = new Menu("편집");
 		help = new Menu("도움말");
+		esc = new MenuItem("Exit   끝내기");
 		remove = new Button("삭제");
 		modify = new Button("변경");
 		cancel = new Button("취소");
@@ -67,6 +73,7 @@ public class FlowTest implements ActionListener {
 		select = new Button("조회");
 		update = new Button("수정");
 		delete = new Button("삭제");
+		exit = new Button("종료");
 		
 		li1 = new Label("이름", Label.CENTER);
 		li2 = new Label("나이", Label.CENTER);
@@ -95,6 +102,7 @@ public class FlowTest implements ActionListener {
 		panel5.setLayout(new FlowLayout());
 		panel6.setLayout(new GridLayout(1, 2));
 		panel7.setLayout(new FlowLayout());
+		file.add(esc);
 		menubar.add(file);
 		menubar.add(edit);
 		menubar.add(help);
@@ -106,10 +114,14 @@ public class FlowTest implements ActionListener {
 		select.addActionListener(this);
 		update.addActionListener(this);
 		delete.addActionListener(this);
+		exit.addActionListener(this);
+		exit.setForeground(Color.BLUE);
 		modify.addActionListener(this);
 		cancel.addActionListener(this);
 		remove.addActionListener(this);
 		cancel2.addActionListener(this);
+		
+		esc.addActionListener(this);
 		
 		panel1.add(li1);
 		panel1.add(tf1);
@@ -122,6 +134,7 @@ public class FlowTest implements ActionListener {
 		panel3.add(select);
 		panel3.add(update);
 		panel3.add(delete);
+		panel3.add(exit);
 		panel4.add(updateNumLabel);
 		panel4.add(updateNum);
 		panel4.add(newAgeLabel);
@@ -145,12 +158,13 @@ public class FlowTest implements ActionListener {
 		
 		
 		//마무리 2개(프레임 사이즈 설정, 프레임 보이기 설정)
+		dm = new Dimension(400,470);
 		panel4.setVisible(false);
 		panel5.setVisible(false);
 		panel6.setVisible(false);
 		panel7.setVisible(false);
-		f.setLocation(550, 180);
-		f.setSize(350, 470);
+		f.setLocation(550, 100);
+		f.setSize(dm);
 		f.setMenuBar(menubar);
 		f.setVisible(true);
 		
@@ -212,7 +226,7 @@ public class FlowTest implements ActionListener {
 				
 				panel4.setVisible(false);
 				panel5.setVisible(false);
-				f.setSize(350, 470);
+				f.setSize(dm);
 				f.setVisible(true);
 				modifyClicked = false;
 				
@@ -221,7 +235,7 @@ public class FlowTest implements ActionListener {
 				panel5.setVisible(true);
 				panel6.setVisible(false);
 				panel7.setVisible(false);
-				f.setSize(350, 420);
+				f.setSize(400,600);
 				f.setVisible(true);
 				modifyClicked = true;
 				deleteClicked = false;
@@ -234,7 +248,7 @@ public class FlowTest implements ActionListener {
 			if(deleteClicked){
 				panel6.setVisible(false);
 				panel7.setVisible(false);
-				f.setSize(350, 470);
+				f.setSize(dm);
 				f.setVisible(true);
 				deleteClicked = false;
 				
@@ -243,13 +257,17 @@ public class FlowTest implements ActionListener {
 				panel7.setVisible(true);
 				panel4.setVisible(false);
 				panel5.setVisible(false);
-				f.setSize(350, 420);
+				f.setSize(400,550);
 				f.setVisible(true);
 				deleteClicked = true;
 				modifyClicked = false;
 			}
 
 			
+		}
+		
+		if(e.getSource() == exit){
+			System.exit(0);
 		}
 		
 		//수정
@@ -281,23 +299,27 @@ public class FlowTest implements ActionListener {
 					String oldJob = persons.get(idx-1).getJob();
 					
 					persons.set(idx-1, new Person(name, age, job));
-					ta1.append("변경 완료.\n");
 					
 					updateNum.setText("");
 					newAge.setText("");
 					newJob.setText("");
 					panel4.setVisible(false);
 					panel5.setVisible(false);
-					f.setSize(350, 470);
+					f.setSize(dm);
 					f.setVisible(true);
 					modifyClicked = false;
 					
-					if(oldAge == age){
+					if(oldAge == age && !oldJob.equals(job)){
+						ta1.append("변경 완료.\n");
 						ta1.append("\t<변경사항>\n\t직업: " + oldJob + " -> " + job + "\n");
 						
-					} else if(oldJob.equals(job)){
+					} else if(oldJob.equals(job) && oldAge != age){
+						ta1.append("변경 완료.\n");
 						ta1.append("\t<변경사항>\n\t나이: " +oldAge + " -> " + age+"\n");
+					} else if(oldAge == age && oldJob.equals(job)){
+						ta1.append("바뀐 내용이 없습니다.\n");
 					} else {
+						ta1.append("변경 완료.\n");
 						ta1.append("\t<변경사항>\n\t나이: " +oldAge + " -> " + age+"\n\t직업: " + oldJob + " -> " + job + "\n");
 					}
 				
@@ -313,7 +335,7 @@ public class FlowTest implements ActionListener {
 			
 			panel4.setVisible(false);
 			panel5.setVisible(false);
-			f.setSize(350, 470);
+			f.setSize(dm);
 			f.setVisible(true);
 			modifyClicked = false;
 		}
@@ -337,9 +359,9 @@ public class FlowTest implements ActionListener {
 					deleteNum.setText("");
 					panel6.setVisible(false);
 					panel7.setVisible(false);
-					f.setSize(350, 470);
+					f.setSize(dm);
 					f.setVisible(true);
-					deleteClicked = true;
+					deleteClicked = false;
 				}
 				
 			}
@@ -352,17 +374,22 @@ public class FlowTest implements ActionListener {
 			if(deleteClicked){
 				panel6.setVisible(false);
 				panel7.setVisible(false);
-				f.setSize(350, 470);
+				f.setSize(dm);
 				f.setVisible(true);
 				deleteClicked = false;
 				
 			} else {
 				panel6.setVisible(true);
 				panel7.setVisible(true);
-				f.setSize(350, 400);
+				f.setSize(dm);
 				f.setVisible(true);
 				deleteClicked = true;
 			}
+		}
+		
+		//esc클릭
+		if(e.getSource() == esc){
+			System.exit(0);
 		}
 	}
 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<!-- testSql.xml -->
+<sqlMap namespace="empcopy">
+
+<insert id="insertEmp" >
+	insert into empcopy (empno, ename, sal, deptno) values(8000, '길동', 3000, 20)
+</insert>
+
+<insert id="insertEmp2" parameterClass="java.lang.String">
+	insert into empcopy (empno, ename, sal, deptno) values (8004,#value#,3000,10)
+</insert>
+
+<insert id="insertEmp3" parameterClass="com.kosta.j0516.Emp">
+	insert into empcopy (empno, ename, sal, deptno) values (#empno#,#ename#,#sal#,#deptno#)
+</insert>
+
+<delete id="deleteEmp">
+	delete from empcopy where empno = 8000
+</delete>
+
+<delete id="deleteEmp2" parameterClass="String">
+	delete from empcopy where ename = #value#
+</delete>
+
+<!-- 문제) 7788사번을 갖는 사원의 이름을 조회 -->
+<select id="selEname" resultClass="String">
+	select ename from empcopy where empno = 7788
+</select>
+
+<!-- 문제) 전달된 사번을 통해 사원명 조회 -->
+<select id="selEname2" resultClass="String" parameterClass="int">
+	select ename from empcopy where empno = #value#
+</select>
+
+</sqlMap>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<sqlMap namespace="emp">
+
+	<!-- //문제) 30번 부서에 근무하는 사원명 조회 -->
+	<select id="selEname" resultClass="String">
+		select ename from empcopy where deptno = 30
+	</select>
+	
+	<!-- //문제) 특정부서에 근무하는 사원의 사원번호, 사원명, 급여, 부서번호 출력 -->
+	<select id="selDeptno" resultClass="com.kosta.j0516.Emp" parameterClass="int">
+		select empno, ename, sal, deptno from emp where deptno = #value#
+	</select>
+	
+</sqlMap>

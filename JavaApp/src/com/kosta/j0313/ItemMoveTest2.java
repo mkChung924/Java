@@ -112,10 +112,13 @@ public class ItemMoveTest2 extends Frame implements ActionListener{
 				rtf.setText("");
 			}
 		} else if(e.getSource() == bt_r){
-			String item[] = lList.getSelectedItems();
-			for(int i = 0; i < item.length; i++){
-				rList.add(item[i]);
-				lList.remove(item[i]);
+
+			int items[] = lList.getSelectedIndexes();
+			for(int i = 0; i < items.length; i++){
+				rList.add(lList.getItem(items[i]));
+			}
+			for(int i = items.length; i > 0; i--){
+				lList.remove(items[i-1]);
 			}
 			
 		} else if(e.getSource() == bt_r_all){
@@ -127,10 +130,13 @@ public class ItemMoveTest2 extends Frame implements ActionListener{
 			lList.removeAll();
 			
 		} else if(e.getSource() == bt_l){
-			String item[] = rList.getSelectedItems();
-			for(int i = 0; i < item.length; i++){
-				lList.add(item[i]);
-				rList.remove(item[i]);
+
+			int items[] = rList.getSelectedIndexes();
+			for(int i = 0; i < items.length; i++){
+				lList.add(rList.getItem(items[i]));
+			}
+			for(int i = items.length; i > 0; i--){
+				rList.remove(items[i-1]);
 			}
 			
 		} else if(e.getSource() == bt_l_all){

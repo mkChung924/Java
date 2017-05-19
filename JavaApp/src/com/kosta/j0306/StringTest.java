@@ -51,6 +51,9 @@ public class StringTest {
 		System.out.println(str.trim().length());
 		
 		System.out.println((int)'A');
+		
+		String sss = "push";
+		String ss[] = sss.split(" ");
 
 	}
 
